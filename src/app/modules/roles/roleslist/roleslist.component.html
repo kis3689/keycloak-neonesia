@@ -1,0 +1,112 @@
+<article class="main-article">
+  <section class="title-section">
+    <div>
+      <h2>Roles</h2>
+    </div>
+    <div>
+      <a mat-flat-button color="primary" routerLinkActive="list-item-active" routerLink="/roles/edit">Add roles</a>
+    </div>
+  </section>
+
+  <section class="edit-container">
+    <mat-tab-group>
+      <mat-tab label="Realm Roles">
+        <section>
+          <section class="search-section">
+            <div>
+              <form class="search-form">
+                <mat-form-field class="seach-form-full-width">
+                  <mat-label>Search</mat-label>
+                  <input matInput placeholder="">
+                  <button mat-icon-button matSuffix>
+                    <mat-icon>search</mat-icon>
+                  </button>
+                </mat-form-field>
+              </form>
+            </div>
+            <div>
+              <button mat-raised-button (click)="getData()">
+                View all roles
+              </button>
+            </div>
+            <div></div>
+          </section>
+  
+          <mat-divider></mat-divider>
+  
+          <section class="empty-box" [hidden]="dataTableShow">
+            please enter a search, or click on view all roles
+          </section>
+  
+          <section [hidden]="!dataTableShow">
+            <table mat-table [dataSource]="dataSource">
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Role Name </th>
+                <td mat-cell *matCellDef="let roles"> {{roles.name}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef> Description </th>
+                <td mat-cell *matCellDef="let roles"> {{roles.description}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let roles">
+                  <a mat-raised-button color="primary" routerLinkActive="list-item-active" routerLink="/roles/edit">Edit</a>
+                  <button mat-raised-button color="warn">Delete</button>
+                </td>
+              </ng-container>
+  
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+  
+            <mat-paginator [pageSizeOptions]="[5, 10, 20, 30]" showFirstLastButtons></mat-paginator>
+          </section>
+        </section>
+      </mat-tab>
+      <mat-tab label="Default Roles">
+        <section class="tab-section">
+          <form>
+            <table>
+              <tr>
+                <th>Roles</th>
+                <td>
+                  <div class="padding-10">
+                    Available Roles
+                  </div>
+                  <div class="list-box">
+                    <mat-selection-list #roles>
+                      <mat-list-option *ngFor="let role of roleData">
+                        {{role.name}}
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </div>
+                  <div class="padding-10">
+                    <button mat-flat-button color="primary">Add selected ></button>
+                  </div>
+                </td>
+                <td>
+                  <div class="padding-10">
+                    Assigned Roles
+                  </div>
+                  <div class="list-box">
+                    <mat-selection-list #roles>
+                      <mat-list-option *ngFor="let role of roleData">
+                        {{role.name}}
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </div>
+                  <div class="padding-10">
+                    <button mat-flat-button color="warn">Remove selected ></button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </section>
+      </mat-tab>
+    </mat-tab-group>
+  </section>
+</article>

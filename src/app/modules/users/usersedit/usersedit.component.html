@@ -1,0 +1,218 @@
+<article class="main-article">
+    <section class="title-section">
+        <div>
+            <h2>Add user</h2>
+        </div>
+        <div></div>
+    </section>
+
+    <section class="edit-container">
+        <mat-tab-group>
+            <mat-tab label="Details">
+                <section class="tab-section">
+                    <form>
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <td>
+                                    <mat-form-field appearance="fill">
+                                        <input matInput required disabled>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Created At</th>
+                                <td>
+                                    <span>2020-01-01</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>User Name <span class="redDots">*</span></th>
+                                <td>
+                                    <mat-form-field appearance="fill">
+                                        <input matInput required>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>
+                                    <mat-form-field appearance="fill">
+                                        <input matInput required>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>First Name</th>
+                                <td>
+                                    <mat-form-field appearance="fill">
+                                        <input matInput required>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Last Name</th>
+                                <td>
+                                    <mat-form-field appearance="fill">
+                                        <input matInput required>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <mat-divider></mat-divider>
+                            <section class="btn-section">
+                                <div>
+                                    <button mat-raised-button color="primary">
+                                        Save
+                                    </button>
+                                    <button mat-raised-button color="warn">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </section>
+                        </div>
+                    </form>
+                </section>
+            </mat-tab>
+            <mat-tab label="Password">
+                <section class="tab-section">
+                    <form>
+                        <table>
+                            <tr>
+                                <th>Password</th>
+                                <td>
+                                    <mat-form-field appearance="fill">
+                                        <input matInput required>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Password Confirmation</th>
+                                <td>
+                                    <mat-form-field appearance="fill">
+                                        <input matInput required>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Temporary</th>
+                                <td>
+                                    <mat-form-field floatLabel="always" appearance="none">
+                                        <mat-slide-toggle [(ngModel)]="isChecked" name="check">
+                                            <span class="text-invisible">{{isChecked ? 'on' : 'off'}}</span>
+                                        </mat-slide-toggle>
+                                        <input matInput #value hidden>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <mat-divider></mat-divider>
+                            <section class="btn-section">
+                                <div>
+                                    <button mat-raised-button color="primary">
+                                        Save
+                                    </button>
+                                    <button mat-raised-button color="warn">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </section>
+                        </div>
+                    </form>
+                </section>
+            </mat-tab>
+            <mat-tab label="Role Mappings">
+                <section class="tab-section">
+                    <form>
+                            <table>
+                                <tr>
+                                    <th>Roles</th>
+                                    <td>
+                                        <div class="padding-10">
+                                            Available Roles
+                                        </div>
+                                        <div class="list-box">
+                                            <mat-selection-list #roles>
+                                                <mat-list-option *ngFor="let role of roleData">
+                                                    {{role.name}}
+                                                </mat-list-option>
+                                            </mat-selection-list>
+                                        </div>
+                                        <div class="padding-10">
+                                            <button mat-flat-button color="primary">Add selected ></button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="padding-10">
+                                            Assigned Roles
+                                        </div>
+                                        <div class="list-box">
+                                            <mat-selection-list #roles>
+                                                <mat-list-option *ngFor="let role of roleData">
+                                                    {{role.name}}
+                                                </mat-list-option>
+                                            </mat-selection-list>
+                                        </div>
+                                        <div class="padding-10">
+                                            <button mat-flat-button color="warn">Remove selected ></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                    </form>
+                </section>
+            </mat-tab>
+            <mat-tab label="Groups">
+                <section class="tab-section">
+                    <form>
+                            <table>
+                                <tr>
+                                    <th>Groups</th>
+                                    <td>
+                                        <div class="padding-10">
+                                            Available Groups
+                                        </div>
+                                        <div class="tree-box">
+                                            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="groups-tree">
+                                                <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                                                    <li>
+                                                        <div class="mat-tree-node">
+                                                            <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
+                                                                <mat-icon class="mat-icon-rtl-mirror">
+                                                                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                                                                </mat-icon>
+                                                            </button>
+                                                            <mat-checkbox>{{node.name}}</mat-checkbox>
+                                                        </div>
+                                                        <ul [class.groups-tree-invisible]="!treeControl.isExpanded(node)">
+                                                            <ng-container matTreeNodeOutlet></ng-container>
+                                                        </ul>
+                                                    </li>
+                                                </mat-nested-tree-node>
+                                            </mat-tree>
+                                        </div>
+                                        <div class="padding-10">
+                                            <button mat-flat-button color="primary">Join</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="padding-10">
+                                            Groups Membership
+                                        </div>
+                                        <div class="tree-box">
+                                            neonesia > manage
+                                        </div>
+                                        <div class="padding-10">
+                                            <button mat-flat-button color="warn">Leave</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                    </form>
+                </section>
+            </mat-tab>
+        </mat-tab-group>
+    </section>
+</article>

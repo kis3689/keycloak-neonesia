@@ -1,0 +1,61 @@
+.main-article {
+    min-width: 450px;
+    margin: 20px;
+}
+
+.main-article .title-section {
+    padding-bottom: 15px;
+    display: flex;
+}
+
+.main-article .title-section div:last-child {
+    margin-left: auto;
+}
+
+.search-section {
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.search-section > div {
+    margin-right: 10px;
+}
+
+.search-section > div:last-child {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.search-section > div:last-child button, .search-section > div:last-child a {
+    margin-right: 5px;
+}
+
+.search-section > div:last-child button:last-child {
+    margin-right: 0;
+}
+
+.empty-box {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.search-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.search-form-full-width {
+    width: 100%;
+}
+
+.groups-tree-invisible {
+    display: none;
+}
+
+.groups-tree ul, .groups-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}

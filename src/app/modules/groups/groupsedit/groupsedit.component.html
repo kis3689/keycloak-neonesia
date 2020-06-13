@@ -1,0 +1,128 @@
+<article class="main-article">
+    <section class="title-section">
+        <div>
+            <h2>Create Groups</h2>
+        </div>
+        <div></div>
+    </section>
+
+    <section class="edit-container">
+        <mat-tab-group>
+            <mat-tab label="Setting">
+                <section class="tab-section">
+                    <form>
+                        <table>
+                            <tr>
+                                <th>Name <span class="redDots">*</span></th>
+                                <td>
+                                    <mat-form-field appearance="fill">
+                                        <input matInput required>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <mat-divider></mat-divider>
+                            <section class="btn-section">
+                                <div>
+                                    <button mat-raised-button color="primary">
+                                        Save
+                                    </button>
+                                    <button mat-raised-button color="warn">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </section>
+                        </div>
+                    </form>
+                </section>
+            </mat-tab>
+            <mat-tab label="Members">
+                <section>
+                    <div class="empty-members-box">
+                        No group member
+                    </div>
+
+                    <div>
+                        <table mat-table [dataSource]="dataSource">
+                            <ng-container matColumnDef="username">
+                                <th mat-header-cell *matHeaderCellDef> Name </th>
+                                <td mat-cell *matCellDef="let users"> {{users.username}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="lastName">
+                                <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                                <td mat-cell *matCellDef="let users"> {{users.lastName}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="firstName">
+                                <th mat-header-cell *matHeaderCellDef> First Name </th>
+                                <td mat-cell *matCellDef="let users"> {{users.firstName}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="email">
+                                <th mat-header-cell *matHeaderCellDef> Email </th>
+                                <td mat-cell *matCellDef="let users"> {{users.email}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="briefRepresentation">
+                                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                                <td mat-cell *matCellDef="let users">
+                                    <a mat-raised-button color="primary" routerLinkActive="list-item-active"
+                                        routerLink="/users/edit">Edit</a>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 30]" showFirstLastButtons>
+                        </mat-paginator>
+                    </div>
+                </section>
+            </mat-tab>
+            <mat-tab label="Role Mappings">
+                <section class="tab-section">
+                    <form>
+                        <table>
+                            <tr>
+                                <th>Roles</th>
+                                <td>
+                                    <div class="padding-10">
+                                        Available Roles
+                                    </div>
+                                    <div class="list-box">
+                                        <mat-selection-list #roles>
+                                            <mat-list-option *ngFor="let role of roleData">
+                                                {{role.name}}
+                                            </mat-list-option>
+                                        </mat-selection-list>
+                                    </div>
+                                    <div class="padding-10">
+                                        <button mat-flat-button color="primary">Add selected ></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="padding-10">
+                                        Assigned Roles
+                                    </div>
+                                    <div class="list-box">
+                                        <mat-selection-list #roles>
+                                            <mat-list-option *ngFor="let role of roleData">
+                                                {{role.name}}
+                                            </mat-list-option>
+                                        </mat-selection-list>
+                                    </div>
+                                    <div class="padding-10">
+                                        <button mat-flat-button color="warn">Remove selected ></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </section>
+            </mat-tab>
+        </mat-tab-group>
+    </section>
+</article>

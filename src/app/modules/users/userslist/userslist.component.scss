@@ -1,0 +1,64 @@
+.main-article {
+    min-width: 450px;
+    margin: 20px;
+}
+
+.main-article .title-section {
+    padding-bottom: 15px;
+    display: flex;
+}
+
+.main-article .title-section div:last-child {
+    margin-left: auto;
+}
+
+.search-section {
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.search-section > div {
+    margin-right: 10px;
+}
+
+.search-section > div:last-child {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.search-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.search-form-full-width {
+    width: 100%;
+}
+
+.empty-box {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.mat-table {
+    width: 100%;
+}
+
+.mat-table th, .mat-table td {
+    text-align: center;
+}
+
+.mat-table td button, .mat-table td a {
+    margin-right: 5px;
+}
+
+.mat-table td button:last-child {
+    margin: 0;
+}
+
+
+
+
+
