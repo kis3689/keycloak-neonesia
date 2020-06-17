@@ -12,7 +12,7 @@
         <form class="search-form">
           <mat-form-field class="search-form-full-width">
             <mat-label>Search</mat-label>
-            <input matInput placeholder="search">
+            <input matInput placeholder="search" #searchInput>
             <button mat-icon-button matSuffix>
               <mat-icon>search</mat-icon>
             </button>
@@ -25,13 +25,13 @@
         </button>
       </div>
       <div>
-        <a mat-raised-button color="primary" routerLinkActive="list-item-active" routerLink="/groups/edit">
+        <button mat-raised-button color="primary" routerLinkActive="list-item-active" routerLink="/groups/edit">
           New
-        </a>
-        <button mat-raised-button>
+        </button>
+        <button mat-raised-button routerLinkActive="list-item-active" routerLink="/groups/edit">
           Edit
         </button>
-        <button mat-raised-button color="warn">
+        <button mat-raised-button color="warn" (click)="deleteGroup()" >
           Delete
         </button>
       </div>
@@ -46,7 +46,7 @@
     <section [hidden]="!dataShow">
       <div>
         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="groups-tree">
-          <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+          <mat-nested-tree-node matTreeNodeToggle *matTreeNodeDef="let node; when: hasChild">
             <li>
               <div class="mat-tree-node">
                 <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
@@ -54,7 +54,7 @@
                     {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                   </mat-icon>
                 </button>
-                {{node.name}}
+                <mat-checkbox>{{node.name}}</mat-checkbox>
               </div>
               <ul [class.groups-tree-invisible]="!treeControl.isExpanded(node)">
                 <ng-container matTreeNodeOutlet></ng-container>

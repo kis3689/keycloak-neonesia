@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { PeriodicGroup, SAMPLE_GROUPS } from '../../sample-groups';
@@ -18,6 +18,10 @@ export class GroupslistComponent implements OnInit {
 
   hasChild = (_: number, node: PeriodicGroup) => !!node.children && node.children.length > 0;
   
+  deleteGroup() {
+    confirm('Are you sure want to permanently delete the group ?');
+  }
+
   getData() {
     this.dataShow = !this.dataShow;
   }

@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ContentChild, ElementRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { PeriodicUser, SAMPLE_USERS } from '../../sample-users';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -18,13 +20,16 @@ export class UserslistComponent implements OnInit {
 
   dataShow = false;
 
+  changeLock(massege: string) {
+    this._snackBar.open('Success! The user has been ' + massege + '.', 'Cancle', {duration: 2000,});
+  }
+
   getData() {
     this.dataShow = !this.dataShow;
   }
 
   userDelete(event: any) {
     confirm('Are you sure want to permanently delete the user (id : '+event+')?');
-    
   }
 
   applyFilter() {
@@ -36,6 +41,6 @@ export class UserslistComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
 }

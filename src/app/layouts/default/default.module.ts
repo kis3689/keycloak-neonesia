@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { UsersModule } from 'src/app/modules/users/users.module';
 import { GroupsModule } from 'src/app/modules/groups/groups.module';
 import { RolesModule } from 'src/app/modules/roles/roles.module';
+import { AccountModule } from 'src/app/modules/account/account.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RolesModule } from 'src/app/modules/roles/roles.module';
     MatSidenavModule,
     UsersModule,
     GroupsModule,
-    RolesModule
+    RolesModule,
+    AccountModule
 
   ]
 })

@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "keycloak-neonesia"
+  "defaultProject": "keycloak-neonesia",
+  "cli": {
+    "analytics": "cb46aa16-217d-4520-b62a-952108a20a5b"
+  }
 }

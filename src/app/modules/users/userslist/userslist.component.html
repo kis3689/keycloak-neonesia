@@ -4,7 +4,7 @@
       <h2>Users</h2>
     </div>
     <div>
-      <a mat-flat-button color="primary" routerLinkActive="list-item-active" routerLink="/users/edit">Add user</a>
+      <button mat-flat-button color="primary" routerLinkActive="list-item-active" routerLink="/users/edit">Add user</button>
     </div>
   </section>
 
@@ -65,9 +65,9 @@
         <ng-container matColumnDef="briefRepresentation">
           <th mat-header-cell *matHeaderCellDef> Actions </th>
           <td mat-cell *matCellDef="let users">
-            <a mat-raised-button color="primary" routerLinkActive="list-item-active" routerLink="/users/edit">Edit</a>
-            <button mat-raised-button disabled="{{users.briefRepresentation == '0' ? 'true':'false'}}">Lock</button>
-            <button mat-raised-button disabled="{{users.briefRepresentation == '1' ? 'true':'false'}}">Unlock</button>
+            <button mat-raised-button color="primary" routerLinkActive="list-item-active" routerLink="/users/edit">Edit</button>
+            <button mat-raised-button disabled="{{users.briefRepresentation == '0' ? 'true':'false'}}" (click)="changeLock('Lock')">Lock</button>
+            <button mat-raised-button disabled="{{users.briefRepresentation == '1' ? 'true':'false'}}" (click)="changeLock('Unlock')">Unlock</button>
             <button mat-raised-button color="warn" (click)="userDelete(users.id)">Delete</button>
           </td>
         </ng-container>

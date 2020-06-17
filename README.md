@@ -31,3 +31,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 1. ng add @angular/material
 2. ng add @angular/flex-layout
+
+
+## need to fix
+
+1. login - remember me 구현
+2. group - tree filter
+3. 

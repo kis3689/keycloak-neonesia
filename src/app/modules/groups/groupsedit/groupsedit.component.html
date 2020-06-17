@@ -16,7 +16,8 @@
                                 <th>Name <span class="redDots">*</span></th>
                                 <td>
                                     <mat-form-field appearance="fill">
-                                        <input matInput required>
+                                        <input matInput required [formControl]="groupName">
+                                        <mat-error *ngIf="groupName.invalid">{{getErrorMessage_required(groupName)}}</mat-error>
                                     </mat-form-field>
                                 </td>
                             </tr>
@@ -68,8 +69,8 @@
                             <ng-container matColumnDef="briefRepresentation">
                                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                                 <td mat-cell *matCellDef="let users">
-                                    <a mat-raised-button color="primary" routerLinkActive="list-item-active"
-                                        routerLink="/users/edit">Edit</a>
+                                    <button mat-raised-button color="primary" routerLinkActive="list-item-active"
+                                        routerLink="/users/edit">Edit</button>
                                 </td>
                             </ng-container>
 

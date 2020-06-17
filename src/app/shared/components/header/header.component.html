@@ -17,7 +17,11 @@
                         김인섭
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
+                        <a mat-menu-item routerLinkActive="list-item-active" routerLink="/account">
+                            <mat-icon>account_box</mat-icon>
+                            Manage Account
+                        </a>
+                        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/login">
                             <mat-icon>exit_to_app</mat-icon>
                             Sign out
                         </button>

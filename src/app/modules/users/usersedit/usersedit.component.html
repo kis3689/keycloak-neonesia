@@ -30,7 +30,8 @@
                                 <th>User Name <span class="redDots">*</span></th>
                                 <td>
                                     <mat-form-field appearance="fill">
-                                        <input matInput required>
+                                        <input matInput required [formControl]="userName">
+                                        <mat-error *ngIf="userName.invalid">{{getErrorMessage_required(userName)}}</mat-error>
                                     </mat-form-field>
                                 </td>
                             </tr>
@@ -38,7 +39,8 @@
                                 <th>Email</th>
                                 <td>
                                     <mat-form-field appearance="fill">
-                                        <input matInput required>
+                                        <input matInput required [formControl]="email">
+                                        <mat-error *ngIf="email.invalid">{{getErrorMessage_email(email)}}</mat-error>
                                     </mat-form-field>
                                 </td>
                             </tr>
@@ -83,7 +85,11 @@
                                 <th>Password</th>
                                 <td>
                                     <mat-form-field appearance="fill">
-                                        <input matInput required>
+                                        <input matInput [type]="hide ? 'password' : 'text'">
+                                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                            [attr.aria-pressed]="hide">
+                                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
                                     </mat-form-field>
                                 </td>
                             </tr>
@@ -91,7 +97,11 @@
                                 <th>Password Confirmation</th>
                                 <td>
                                     <mat-form-field appearance="fill">
-                                        <input matInput required>
+                                        <input matInput [type]="hide2 ? 'password' : 'text'">
+                                        <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+                                            [attr.aria-pressed]="hide2">
+                                            <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
                                     </mat-form-field>
                                 </td>
                             </tr>

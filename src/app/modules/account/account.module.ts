@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserseditComponent } from './usersedit/usersedit.component';
-import { UserslistComponent } from './userslist/userslist.component';
+import { AccounteditComponent } from './accountedit/accountedit.component';
+
 
 import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator'
@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
-import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
@@ -20,13 +19,12 @@ import { MatListModule } from '@angular/material/list'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 
+
 @NgModule({
   declarations: [
-    UserseditComponent,
-    UserslistComponent
+    AccounteditComponent
   ],
   imports: [
-    RouterModule,
     CommonModule,
     MatPaginatorModule,
     MatTableModule,
@@ -46,8 +44,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
     MatSnackBarModule
   ],
   exports: [
-    UserseditComponent,
-    UserslistComponent
+    AccounteditComponent
   ]
 })
-export class UsersModule { }
+export class AccountModule { }

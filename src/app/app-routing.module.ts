@@ -7,34 +7,113 @@ import { RoleslistComponent } from './modules/roles/roleslist/roleslist.componen
 import { UserseditComponent } from './modules/users/usersedit/usersedit.component';
 import { GroupseditComponent } from './modules/groups/groupsedit/groupsedit.component';
 import { RoleseditComponent } from './modules/roles/rolesedit/rolesedit.component';
+import { AccounteditComponent } from './modules/account/accountedit/accountedit.component';
+import { LoginComponent } from './account/login/login.component';
+import { RegisterComponent } from './account/register/register.component';
+import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 
 
-const routes: Routes = [{
-  path: '',
-  component: DefaultComponent,
-  children: [{
+const routes: Routes = [
+  {
     path: '',
-    component: UserslistComponent
+    component: LoginLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: LoginComponent
+      }, {
+        path: 'login',
+        component: LoginComponent
+      }, {
+        path: 'register',
+        component: RegisterComponent
+      }
+    ]
   }, {
     path: 'users',
-    component: UserslistComponent
-  }, {
-    path:'users/edit',
-    component: UserseditComponent
+    component: DefaultComponent,
+    children: [
+      {
+        path: '',
+        component: UserslistComponent
+      }, {
+        path: 'edit',
+        component: UserseditComponent
+      }
+    ]
   }, {
     path: 'groups',
-    component: GroupslistComponent
-  }, {
-    path: 'groups/edit',
-    component: GroupseditComponent
+    component: DefaultComponent,
+    children: [
+      {
+        path: '',
+        component: GroupslistComponent
+      }, {
+        path: 'edit',
+        component: GroupseditComponent
+      }
+    ]
   }, {
     path: 'roles',
-    component: RoleslistComponent
+    component: DefaultComponent,
+    children: [
+      {
+        path: '',
+        component: RoleslistComponent
+      }, {
+        path: 'edit',
+        component: RoleseditComponent
+      }
+    ]
   }, {
-    path: 'roles/edit',
-    component: RoleseditComponent
-  }]
-}];
+    path: 'account',
+    component: DefaultComponent,
+    children: [
+      {
+        path: '',
+        component: AccounteditComponent
+      }
+    ]
+  }
+  
+  
+  
+  // , {
+  // path: '',
+  // component: DefaultComponent,
+  // children: [{
+  //   path: '',
+  //   component: UserslistComponent
+  // }, {
+  //   path: 'users',
+  //   component: UserslistComponent
+  // }, {
+  //   path: 'users/edit',
+  //   component: UserseditComponent
+  // }, {
+  //   path: 'groups',
+  //   component: GroupslistComponent
+  // }, {
+  //   path: 'groups/edit',
+  //   component: GroupseditComponent
+  // }, {
+  //   path: 'roles',
+  //   component: RoleslistComponent
+  // }, {
+  //   path: 'roles/edit',
+  //   component: RoleseditComponent
+  // } ,{
+  //   path: 'account/edit',
+  //   component: AccounteditComponent
+  // }]}, {
+  //   path: 'login',
+  //   component: LoginComponent
+  // }, {
+  //   path: 'register',
+  //   component: RegisterComponent
+  // }
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
