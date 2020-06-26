@@ -32,6 +32,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 1. ng add @angular/material
 2. ng add @angular/flex-layout
 3. npm i --save keycloak-angular
+4. npm i keycloak-js
 
 
 ## need to fix
